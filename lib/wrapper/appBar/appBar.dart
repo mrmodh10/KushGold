@@ -11,30 +11,39 @@ PreferredSize appBar({required BuildContext context}) {
   ResponsiveBloc responsiveBloc = context.read<ResponsiveBloc>();
   return PreferredSize(
       preferredSize:
-          Size.fromHeight(responsiveBloc.constraints.maxHeight * 0.2),
+          Size.fromHeight(responsiveBloc.constraints.maxHeight * (MediaQuery.of(context).size.width < 1000 ? 0.25 : 0.2)),
       child: BlocBuilder<ResponsiveBloc, ResponsiveBlocState>(
         builder: (context, state) {
-          return Column(
-            children: [
-              Expanded(
-                  flex: 2,
-                  child: Container(
-                    color: theme.colorScheme.onPrimaryContainer,
-                    child: createPriceBar(context: context),
-                  )),
-              Expanded(
-                  flex: 8,
-                  child: Card(
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                    margin: EdgeInsets.zero,
-                    color: theme.colorScheme.surfaceContainerLowest,
-                    child: createSearchBar(
-                        context: context, responsiveBloc: responsiveBloc),
-                  )),
-            ],
+          return Card(
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero,
+            ),
+            margin: EdgeInsets.zero,
+            color: theme.colorScheme.surfaceContainerLowest,
+            child: Column(
+              children: [
+                Expanded(
+                    flex: 2,
+                    child: Container(
+                      color: theme.colorScheme.onPrimaryContainer,
+                      child: createPriceBar(context: context),
+                    )),
+                Expanded(
+                  flex: responsiveBloc.isLarge? 8 : 5,
+                  child: createSearchBar(
+                      context: context, responsiveBloc: responsiveBloc),
+                ),
+                Expanded(
+                    flex: responsiveBloc.isLarge ? 0:4,
+                    child: responsiveBloc.isLarge?Container():Align(
+                    alignment: Alignment.center,
+                    child: customPadding(child: Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: buildSearchBar(responsiveBloc),
+                    ))))
+              ],
+            ),
           );
         },
       ));
@@ -54,7 +63,9 @@ Widget createSearchBar(
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 8, bottom: 8),
-              child: Image.asset(IconAssert.appIcon),
+              child: SizedBox(
+                  height: 100,
+                  child: Image.asset(IconAssert.appIcon)),
             ),
             AutoSizeText(
               "Kush Gold",
@@ -122,7 +133,7 @@ Widget buildSearchBar(ResponsiveBloc responsiveBloc) {
       TextFormField(
         controller: TextEditingController(),
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(20),
+          contentPadding: responsiveBloc.isLarge ?  EdgeInsets.all(20) : EdgeInsets.all(10),
           hintText: 'Search for a product',
           prefixIcon: Icon(Icons.search),
           border: OutlineInputBorder(

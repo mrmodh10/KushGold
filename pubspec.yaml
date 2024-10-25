@@ -29,12 +29,22 @@ flutter:
     - assert/image/
     - assert/icon/
 
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Roboto
+      fonts:
+         - asset: assert/font/Roboto/Roboto-Black.ttf
+         - asset: assert/font/Roboto/Roboto-BlackItalic.ttf
+         - asset: assert/font/Roboto/Roboto-Bold.ttf
+         - asset: assert/font/Roboto/Roboto-BoldItalic.ttf
+         - asset: assert/font/Roboto/Roboto-Italic.ttf
+         - asset: assert/font/Roboto/Roboto-Light.ttf
+         - asset: assert/font/Roboto/Roboto-Medium.ttf
+         - asset: assert/font/Roboto/Roboto-LightItalic.ttf
+         - asset: assert/font/Roboto/Roboto-Medium.ttf
+         - asset: assert/font/Roboto/Roboto-MediumItalic.ttf
+         - asset: assert/font/Roboto/Roboto-Regular.ttf
+         - asset: assert/font/Roboto/Roboto-Thin.ttf
+         - asset: assert/font/Roboto/Roboto-ThinItalic.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

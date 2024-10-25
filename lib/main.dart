@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
         child: MaterialApp.router(
           routerConfig: goRouter,
           title: 'Kush Gold',
-          // theme: brightness == Brightness.light ? theme.light() : theme.dark(),
+          theme: theme.light()
+          // brightness == Brightness.light ? theme.light() : theme.dark(),
         ),
       ),
     );

@@ -21,9 +21,6 @@ class HomeScreen extends StatelessWidget {
           builder: (context, state) {
             return Column(
               children: [
-                responsiveBloc.isLarge?Container():Align(
-                    alignment: Alignment.center,
-                    child: buildSearchBar(responsiveBloc))
               ],
             );
           },
