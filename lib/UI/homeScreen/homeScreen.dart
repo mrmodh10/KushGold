@@ -5,14 +5,12 @@ import 'package:kushgold_web/wrapper/responsive/bloc/responsiveBloc.dart';
 import 'package:kushgold_web/wrapper/responsive/bloc/responsiveBlocState.dart';
 
 import '../../wrapper/appBar/appBar.dart';
-import '../../wrapper/responsive/responsive.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ResponsiveBloc responsiveBloc = context.read<ResponsiveBloc>();
     return Scaffold(appBar: appBar(context: context), body: customPadding(
       child:
       Padding(
